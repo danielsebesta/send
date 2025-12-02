@@ -291,12 +291,12 @@ const conf = convict({
   },
   ui_color_primary: {
     format: String,
-    default: '#0a84ff',
+    default: '#e7af07',
     env: 'UI_COLOR_PRIMARY'
   },
   ui_color_accent: {
     format: String,
-    default: '#003eaa',
+    default: '#c89506',
     env: 'UI_COLOR_ACCENT'
   },
   custom_locale: {

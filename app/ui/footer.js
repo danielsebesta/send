@@ -22,7 +22,11 @@ class Footer extends Component {
       if (WEB_UI.FOOTER_DONATE_URL != '') {
         links.push(html`
           <li class="m-2">
-            <a href="${WEB_UI.FOOTER_DONATE_URL}" target="_blank">
+            <a
+              href="${WEB_UI.FOOTER_DONATE_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               ${translate('footerLinkDonate')}
             </a>
           </li>
@@ -31,7 +35,11 @@ class Footer extends Component {
       if (WEB_UI.FOOTER_CLI_URL != '') {
         links.push(html`
           <li class="m-2">
-            <a href="${WEB_UI.FOOTER_CLI_URL}" target="_blank">
+            <a
+              href="${WEB_UI.FOOTER_CLI_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               ${translate('footerLinkCli')}
             </a>
           </li>
@@ -40,7 +48,11 @@ class Footer extends Component {
       if (WEB_UI.FOOTER_DMCA_URL != '') {
         links.push(html`
           <li class="m-2">
-            <a href="${WEB_UI.FOOTER_DMCA_URL}" target="_blank">
+            <a
+              href="${WEB_UI.FOOTER_DMCA_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               ${translate('footerLinkDmca')}
             </a>
           </li>
@@ -49,7 +61,11 @@ class Footer extends Component {
       if (WEB_UI.FOOTER_SOURCE_URL != '') {
         links.push(html`
           <li class="m-2">
-            <a href="${WEB_UI.FOOTER_SOURCE_URL}" target="_blank">
+            <a
+              href="${WEB_UI.FOOTER_SOURCE_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               ${translate('footerLinkSource')}
             </a>
           </li>
@@ -58,12 +74,29 @@ class Footer extends Component {
     } else {
       links.push(html`
         <li class="m-2">
-          <a href="https://gitlab.com/timvisee/send" target="_blank">
+          <a
+            href="https://gitlab.com/timvisee/send"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             ${translate('footerLinkSource')}
           </a>
         </li>
       `);
     }
+
+    // SmirkHat.org link (always shown)
+    links.push(html`
+      <li class="m-2">
+        <a
+          href="https://smirkhat.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          SmirkHat.org
+        </a>
+      </li>
+    `);
 
     // Defining a custom footer
     var footer = [];
@@ -73,35 +106,47 @@ class Footer extends Component {
       if (WEB_UI.CUSTOM_FOOTER_URL != '' && WEB_UI.CUSTOM_FOOTER_TEXT != '') {
         footer.push(html`
           <li class="m-2">
-            <a href="${WEB_UI.CUSTOM_FOOTER_URL}" target="_blank">
+            <a
+              href="${WEB_UI.CUSTOM_FOOTER_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               ${WEB_UI.CUSTOM_FOOTER_TEXT}
             </a>
           </li>
         `);
-      }
-      else if (WEB_UI.CUSTOM_FOOTER_URL != '') {
+      } else if (WEB_UI.CUSTOM_FOOTER_URL != '') {
         footer.push(html`
           <li class="m-2">
-            <a href="${WEB_UI.CUSTOM_FOOTER_URL}" target="_blank">
+            <a
+              href="${WEB_UI.CUSTOM_FOOTER_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               ${WEB_UI.CUSTOM_FOOTER_URL}
             </a>
           </li>
         `);
-      }
-      else if (WEB_UI.CUSTOM_FOOTER_TEXT != '') {
+      } else if (WEB_UI.CUSTOM_FOOTER_TEXT != '') {
         footer.push(html`
           <li class="m-2">
             ${WEB_UI.CUSTOM_FOOTER_TEXT}
           </li>
-        `)
-      }
-      else  {
+        `);
+      } else {
         footer.push(html`
           <li class="m-2">
             ${translate('footerText')}
           </li>
         `);
       }
+    } else {
+      // keep old behavior if WEB_UI is missing
+      footer.push(html`
+        <li class="m-2">
+          ${translate('footerText')}
+        </li>
+      `);
     }
 
     return html`

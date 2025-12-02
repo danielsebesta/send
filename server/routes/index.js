@@ -119,6 +119,7 @@ module.exports = function(app) {
     require('./params')
   );
   app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
+  app.post('/api/shorten', require('./shorten'));
   app.get('/__version__', function(req, res) {
     // eslint-disable-next-line node/no-missing-require
     res.sendFile(require.resolve('../../dist/version.json'));
